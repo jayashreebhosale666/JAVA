@@ -1,0 +1,25 @@
+package com.org;
+
+import java.util.Scanner;
+
+public class EnterQ {
+
+	public static void main(String[] args) {
+		int ak,sum=0,product=1,cnt=0;
+		char ch;
+		System.out.println("Enter number or q from user:");
+		Scanner sc = new Scanner(System.in);
+		do
+		{
+			System.out.println("Enter num: ");
+			ak=sc.nextInt();
+			cnt++;
+			sum+=ak;
+			System.out.println("press Q to quit.");
+			ch=sc.next().charAt(0);
+		}while(ch!='q');
+		
+		System.out.println("Average: "+(sum/cnt));
+	}
+
+	}
