@@ -1,0 +1,86 @@
+
+package practice;
+
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Scanner;
+
+class Student
+{
+    int rollno;
+    String name;
+    private String address;
+    Student(int rollno,String name,String address)
+    {
+        this.rollno=rollno;
+        this.name=name;
+        this.address=address;
+    }
+    @Override
+    public String toString()
+    {
+        return "Roll No: "+this.rollno+"\t Name: "+this.name+"\t "+"\t Address: "+this.address ;
+        
+    }
+
+}
+class SortByRoll implements Comparator<Student>
+{
+    // Used for sorting in ascending order of
+    // roll number
+    @Override
+    public int compare(Student a, Student b)
+    {
+        return a.rollno - b.rollno;
+    }
+}
+ 
+class SortByName implements Comparator<Student>
+{
+
+
+    @Override
+    public int compare(Student o1, Student o2) {
+       return o1.name.compareTo(o2.name);
+    }   
+}
+class Practice
+        {
+    public static void main(String[] args) {
+        ArrayList<Student> arl=new ArrayList<>(); 
+        PrintStream o=new PrintStream(System.out);
+        Scanner sc=new Scanner(System.in);
+        Student s;
+        o.println("How many Student detail U wants to add: ");
+        int n=sc.nextInt();
+                for(int i=0;i<n;i++)
+                {
+                    System.out.println("Roll No: ");
+                    int rn=sc.nextInt();
+                    System.out.println("Name: ");
+                    String nm=sc.next();
+                    System.out.println("Address: ");
+                    String adr=sc.next();
+                    arl.add(new Student(rn,nm,adr));
+                }
+        
+               Collections.sort(arl,new SortByRoll());
+               System.out.println("After Sorting By Roll No:");
+        for (Iterator<Student> it=arl.iterator();it.hasNext();) {
+            System.out.println(it.next());
+                 }
+        
+        Collections.sort(arl,new SortByName());
+               System.out.println("After Sorting By Student Name:");
+
+        for(Iterator<Student> it=arl.iterator();it.hasNext();)
+        {
+            System.out.println(it.next());
+        }
+        
+    }
+
+}
