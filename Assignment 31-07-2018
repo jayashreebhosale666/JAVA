@@ -81,6 +81,72 @@ j:2
  :2
 i:1
 h:3
+5)
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class ArrayStartEnd {
+    public static void main(String[] args) throws IOException {
+        System.out.print("Enter array size: ");
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        int n,arr[];
+        n = Integer.parseInt(br.readLine());
+        arr=new int[n];
+        for(int i=0;i<n;i++)
+        {
+           arr[i]=Integer.parseInt(br.readLine());
+        }
+        
+        if(arr[0]==6|| arr[n-1]==6)
+            System.out.println("True");
+        else
+            System.out.println("False");
+    }
+ 
+}
+/**
+OUTPUT::
+*1) Enter array size:5
+6
+1
+2
+3
+4
+
+* 2)
+* Enter array size:4
+1
+2
+3
+6
+True
+* 3)
+* Enter array size: 4
+6
+1
+2
+6
+
+* 4)
+* Enter array size: 4
+1
+2
+3
+4
+False
+* 5)
+* Enter array size: 4
+66
+7
+67
+67
+False
+* 
+ */
+
 8)Display First  non duplicate character
 import java.util.Scanner;
 public class Non_Repeat {
