@@ -264,7 +264,132 @@ GeeksforGeeks
 Palindrome: No
 */
 //-------------------------------------------------------------------------------
-7)
+7)/*
+Java Program to Sort employee details  by their Names in an Alphabetical Order
+ */
+package javaapplication1;
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class TestEmployeeSort {
+    String Name,Address;
+    int salary;
+
+    void accept()
+    {
+       Scanner sc=new Scanner(System.in);
+       PrintStream o=new PrintStream(System.out);
+        
+        o.print("Enter name:");
+        Name=sc.next();
+        o.print("\tEnter address:");
+        Address=sc.next();
+        o.print("\tEnter salary:");
+        salary=sc.nextInt();
+    }
+    void display()
+    {
+        System.out.println("\n Name:"+Name+"\t Address:"+Address+"\tSalary:"+salary);
+    }
+
+    public TestEmployeeSort sortByName(TestEmployeeSort t1[],int n) 
+    {
+        TestEmployeeSort temp=new TestEmployeeSort();
+     for (int i = 0; i < n; i++) {
+               for (int j = i+1; j < n; j++) {
+                if(t1[i].Name.compareTo(t1[j].Name)>0)
+                {
+                    //name swapping
+                    temp.Name=t1[i].Name;
+                    t1[i].Name=t1[j].Name;
+                    t1[j].Name=temp.Name;
+                    
+                    //address swapping
+                      temp.Address=t1[i].Address;
+                    t1[i].Address=t1[j].Address;
+                    t1[j].Address=temp.Address;
+                    //Salary swapping
+                    temp.salary=t1[i].salary;
+                    t1[i].salary=t1[j].salary;
+                    t1[j].salary=temp.salary;
+                    
+                }}}
+        
+        return this;
+     }
+    
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.err.println("How many Employee details You wants to add:: ");
+        int n=sc.nextInt();
+               TestEmployeeSort t[]=new TestEmployeeSort[n];
+               TestEmployeeSort t1=new TestEmployeeSort();
+
+        for (int i = 0; i < n; i++) {
+            t[i]=new TestEmployeeSort();
+            t[i].accept();   
+        }
+        t1.sortByName(t, n);
+       for (int i = 0; i < n; i++) {
+            t[i].display();
+        } 
+    }
+}
+/*
+OUTPUT::
+How many Employee details You wants to add:: 
+10
+Enter name:jay
+	Enter address:pune
+	Enter salary:22000
+Enter name:kumar
+	Enter address:bhor
+	Enter salary:22000
+Enter name:atul
+	Enter address:sinhgad
+	Enter salary:22000
+Enter name:aishwarya
+	Enter address:bombay
+	Enter salary:22000
+Enter name:megha
+	Enter address:delhi
+	Enter salary:34000
+Enter name:saket
+	Enter address:chennai
+	Enter salary:53000
+Enter name:chetan
+	Enter address:Anagar
+	Enter salary:70000
+Enter name:kiran
+	Enter address:baramati
+	Enter salary:60000
+Enter name:aarti
+	Enter address:latur
+	Enter salary:55000
+Enter name:sunil
+	Enter address:lonavala
+	Enter salary:90000
+
+ Name:aarti	 Address:latur	Salary:55000
+
+ Name:aishwarya	 Address:bombay	Salary:22000
+
+ Name:atul	 Address:sinhgad	Salary:22000
+
+ Name:chetan	 Address:Anagar	Salary:70000
+
+ Name:jay	 Address:pune	Salary:22000
+
+ Name:kiran	 Address:baramati	Salary:60000
+
+ Name:kumar	 Address:bhor	Salary:22000
+
+ Name:megha	 Address:delhi	Salary:34000
+
+ Name:saket	 Address:chennai	Salary:53000
+
+*/
 //-------------------------------------------------------------------------------
 8)Display First  non duplicate character
 import java.util.Scanner;
