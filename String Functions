@@ -1,0 +1,99 @@
+package StringDemo;
+
+import java.util.Locale;
+
+class Demo
+{
+	int lengthCal(String str)
+	{
+		int len=str.length();
+		return len;
+	}
+}
+public class Driver {
+
+	public static void main(String[] args) {
+		Demo d=new Demo();
+		//length
+		String str=new String("jayashree");//for str=new String(null) and str=null gives null pointer exception with literal
+		System.out.println("String length:: "+d.lengthCal(str));//9
+		//int comapreTO() op -ve ,+ve, 0
+		String str2=new String("jayashree");
+		String str3=new String("jayashre");
+		System.out.println("compareTo(): "+str.compareTo(str2));//0
+		System.out.println("compareTo(): "+str.compareTo(str3));//1 str3-str
+		System.out.println(str3.compareTo(str));//1 str-str3
+		str3=new String("JAYASHREE");
+		//comparetoignorecase()
+		System.out.println("comparetoignorecase : "+str2.compareToIgnoreCase(str3));
+		String s4=str.concat("Welcome");
+		System.out.println("concat::"+s4);//jayashreeWelcome
+		String s1=""; 
+		String s2="hello"; 
+		System.out.println("isempty:"+s1.isEmpty());      // true
+		System.out.println("isempty:"+s2.isEmpty());      // false
+		 s1="  hello   ";  
+		System.out.println(s1+"how are you");        // without trim()  
+		System.out.println(s1.trim()+"how are you"); // with trim()  
+		s1="Hello hOW Are YOu?";
+		System.out.println("toLowerCase():"+s1.toLowerCase());
+		System.out.println("toLowerCase(Locale): "+s1.toLowerCase(Locale.ENGLISH));
+		System.out.println("toUpperCase():"+s1.toUpperCase());
+		System.out.println("toUpperCase(Locale): "+s1.toUpperCase(Locale.ENGLISH));
+		System.out.println("valueOf():"+String.valueOf(20)+10);
+		System.out.println("replace()"+s1.replace('e', 'j'));
+		//System.out.println(s1);
+		System.out.println("replace()"+s1.replace("e", "gfaf"));
+		
+		str = new String("Site is comcom BeginnersBook.com com");
+
+	       System.out.print("String after replacing com with net :" );
+	       System.out.println(str.replaceFirst("com", ".net"));
+	       System.out.println(str.replaceAll("com", ".net"));
+	       System.out.println("charAt(5): "+str.charAt(5));
+	       s1="hello";	        s2="HELLo";
+	       System.out.println("equals()"+s1.equals(s2));//false
+	       System.out.println("equalsIgnoreCase"+s1.equalsIgnoreCase(s2));//true
+	       
+	       System.out.println("StartWith(si): "+str.startsWith("si"));
+	       System.out.println("StartWith(it): "+str.startsWith("it",1));
+	       System.out.println("StartWith(c,8): "+str.startsWith("com",8));
+	       System.out.println("str.endsWith(\"om\")"+str.endsWith("om"));
+	       System.out.println("Hash Code for String str: "+str.hashCode());	
+	       System.out.println("Index of B in str: "+str.indexOf('B'));
+	       str3="Book";
+	       System.out.println("Index of string str3:"+str.indexOf(str3));
+	       System.out.println("Index of hardcoded string after 4th char:"+str.indexOf("is", 4));
+	       System.out.println("Last 'B' in str whose index<=15:"+str.lastIndexOf('B', 15));
+	       str = "Do you like watching Game of Thrones";
+	   	System.out.println(str.contains("Like")); 
+		System.out.println(str.contains("Game")); 
+		System.out.println(str.contains("Game of")); 
+		System.out.println("split(String regex)without limit:");
+		str = new String("28/12/2013");
+		String s[]=str.split("/");
+		for(int i=0;i<s.length;i++)
+		System.out.print(s[i]+" ");
+		System.out.println("\nsplit(String regex, int limit) with limit=2:");
+		s=str.split("/",2);
+		for(int i=0;i<s.length;i++)
+		System.out.print(s[i]+" ");
+		System.out.println("\nsplit(String regex, int limit) with limit=-5:");
+		s=str.split("/",-2);
+		for(int i=0;i<s.length;i++)	System.out.print(s[i]+" ");
+		System.out.println("\nsplit(String regex, int limit) with limit=0:");
+
+		s=str.split("/",0);
+		for(int i=0;i<s.length;i++)	System.out.print(s[i]+" ");
+	      
+
+
+		
+		
+		
+
+	}
+
+
+
+}
