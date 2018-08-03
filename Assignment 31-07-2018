@@ -448,6 +448,50 @@ a b c d gh f
 Number of words in Line are Count::6
 */
 //-------------------------------------------------------------------------------
-10)
+10)/*Program to count and display consequetively available characters
+eg:
+niit -->i 1
+pp ss m-->p s 2
+pqrs-->0
+*/
+package javaapplication1;
+
+import java.util.Scanner;
+
+public class CountConsequetives {
+
+       public static void main(String[] args) {
+            Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Inpunt Line::");
+        String line=sc.nextLine();
+        int count=0;
+        int len=line.length();
+        for(int i=0;i<line.length();i++)
+        {
+            if( i<(len-1) && line.charAt(i)==line.charAt(i+1)) {
+                count++;
+                System.out.println(line.charAt(i));
+            }            
+        }
+        System.out.println("Consecutive Counts::"+count);
+    }
+}
+/*
+run:
+Enter Inpunt Line::
+niit
+i
+Consecutive Counts::1
+run:
+Enter Inpunt Line::
+abb bbc agcg
+b
+b
+Consecutive Counts::2
+run:
+Enter Inpunt Line::
+
+Consecutive Counts::0
+*/
 //-------------------------------------------------------------------------------
 
