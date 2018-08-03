@@ -209,7 +209,60 @@ False
 * 
  */
  //-------------------------------------------------------------------------------
-6)
+6)/*Write a prigram to check whether given string is palindrome or not */
+package javaapplication1;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+
+/**
+ *
+ * @author jayashree Bhosale
+ */
+public class Palindrome {
+    static PrintStream o=new PrintStream(System.out);
+    static BufferedReader br=null;
+    public static void main(String[] args) {
+        try
+        {
+            br=new BufferedReader(new InputStreamReader(System.in));
+        o.println("Enter String which you wants to check whether it is aplindrome or not???? :: ");
+
+        StringBuilder stringName;
+            stringName = new StringBuilder(br.readLine());
+            String SN=stringName.toString();
+
+            String reverse=new StringBuilder(stringName.reverse()).toString();
+
+
+           if(SN.equals(reverse))
+               System.out.println("Palindrome: Yes");
+            else
+               System.out.println("Palindrome: No");
+                    
+        }catch(Exception e)
+        {
+            o.println(e);
+        }
+    }
+}
+/*
+run:
+Enter String which you wants to check whether it is aplindrome or not???? :: 
+jayashree
+Palindrome: No
+
+run:
+Enter String which you wants to check whether it is aplindrome or not???? :: 
+malayalam
+Palindrome: Yes
+
+run:
+Enter String which you wants to check whether it is aplindrome or not???? :: 
+GeeksforGeeks
+Palindrome: No
+*/
 //-------------------------------------------------------------------------------
 7)
 //-------------------------------------------------------------------------------
