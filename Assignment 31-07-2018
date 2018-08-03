@@ -15,7 +15,7 @@ OUTPUT::
 Enter String: 
 welcome to NIIT
 T I I N   o t   e m o c l e w
-	
+//-------------------------------------------------------------------------------	
 2) Return the number of times that the string "hi" appears anywhere in the given string.
 
 public class CountHi {
@@ -38,8 +38,8 @@ OUTPUT::
 Enter Sting to find how many 'hi' are available in it:: 
 hihi hi
 Count hi::3
+//-------------------------------------------------------------------------------
 3)Occurances of characters in string
-
 package check;
 
 import java.util.Scanner;
@@ -81,6 +81,68 @@ j:2
  :2
 i:1
 h:3
+//-------------------------------------------------------------------------------
+4)/*program:to fill the missing character 
+from the string retrive first two characters only display them 
+if string lendth is less than 2 then place @ character at missing places 
+eg: 
+hello -->he
+h-->h@
+trekking-->tr
+*/
+package javaapplication1;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class MissingFill {
+    
+    /*StringBuilder Fill(StringBuilder str)
+    {
+        if(str.length()<2)
+        str= str.append("@");
+        else
+             str = (StringBuilder) str.subSequence(0, 2);
+        return str;
+}
+             return str;
+    }*/
+    public static void main(String[] args) {
+        try
+        {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+               
+            System.out.println("Enter string you wants to do right trim n fill missing chars:: ");
+               // String name=br.readLine();
+                StringBuilder  name=new StringBuilder (br.readLine());
+                int len=name.length();
+                if(len>2)
+                    System.out.println(name.subSequence(0, 2));
+                else
+                {
+                    if(len==1)
+                    System.out.println(name+"@");
+                    else
+                       System.out.println("@@");
+                }
+        }catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+/**
+ *Enter string you wants to do right trim n fill missing chars:: 
+
+@@
+* Enter string you wants to do right trim n fill missing chars:: 
+jayaa
+ja
+* Enter string you wants to do right trim n fill missing chars:: 
+j
+j@
+ 
+ */
+//-------------------------------------------------------------------------------
 5)
 
 import java.io.BufferedReader;
@@ -146,7 +208,11 @@ False
 False
 * 
  */
-
+ //-------------------------------------------------------------------------------
+6)
+//-------------------------------------------------------------------------------
+7)
+//-------------------------------------------------------------------------------
 8)Display First  non duplicate character
 import java.util.Scanner;
 public class Non_Repeat {
@@ -172,5 +238,9 @@ OUTPUT::
 Enter String: 
 abcabc zz ad
 d
-
+ //-------------------------------------------------------------------------------
+9)
+//-------------------------------------------------------------------------------
+10)
+//-------------------------------------------------------------------------------
 
