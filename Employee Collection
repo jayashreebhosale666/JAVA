@@ -1,0 +1,80 @@
+
+import java.util.Scanner;
+
+class IUDM
+{
+	int Id;
+	String Name;
+	int salary;
+	long phone_no;
+	String Address;
+	String Designation;
+	static int count=0;
+	private Scanner sc;
+	
+	public IUDM() {
+	}
+	void addData()
+	{ 
+		++count;
+		Id=count;
+		sc = new Scanner(System.in);
+		
+	System.out.println("Enter Name::");
+	Name=sc.next();
+	System.out.println("Enter Salary:: ");
+	salary=sc.nextInt();
+	System.out.println("Enter Phone_no::");
+	phone_no=sc.nextLong();
+	System.out.println("Enter Address::");
+	Address=sc.next();
+	System.out.println("Designation::");
+	Designation=sc.next();
+	}
+	void display()
+	{
+		
+	}
+
+}
+
+public class Employee extends IUDM{
+
+	private static Scanner sc;
+
+	public static void main(String[] args) {
+		sc = new Scanner(System.in);
+		char c;
+		ArrayList<IUDM> al=new ArrayList<>();
+		IUDM i= new IUDM();
+
+	do
+	{
+		System.out.println("1.Add\n2.Insert\n3.Update\n4.Delete\n5Display\n6.Exit\n");
+		System.out.println("Enter your Choioce::");
+		int ch=sc.nextInt();
+		switch(ch)
+		{
+		case 1:
+			i=new IUDM();
+			i.addData();
+			al.add( i);
+			System.out.println("Record Add Successful!!!!");
+			
+			break;
+		case 2:
+			for(IUDM i1:al)
+				System.out.println("\nId:"+i1.Id);
+			break;
+			
+		default: System.out.println("Invalid choice.");
+		
+		}
+		System.out.println("Wants to continue???:");
+		c=sc.next().charAt(0);
+	}while(c=='y'||c=='Y');
+		
+	}
+
+}
+
