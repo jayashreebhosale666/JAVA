@@ -1,4 +1,6 @@
+package employee;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class IUDM
@@ -31,8 +33,59 @@ class IUDM
 	System.out.println("Designation::");
 	Designation=sc.next();
 	}
-	void display()
+	void display( IUDM i)
 	{
+		System.out.println("---------------------------");
+		System.out.println("ID: "+i.Id);
+		System.out.println("Name: "+i.Name);
+		System.out.println("Salary: "+i.salary);
+		System.out.println("Phone Number: "+i.phone_no);
+		System.out.println("Address: "+i.Address);
+		System.out.println("Designation: "+i.Designation);
+		System.out.println("---------------------------");
+
+	}
+
+	void insert()
+	{
+		++count;
+		Id=count;
+		sc = new Scanner(System.in);
+		System.out.println("Enter Name::");
+		Name=sc.next();
+		System.out.println("Enter Salary:: ");
+		salary=sc.nextInt();
+		System.out.println("Enter Phone_no::");
+		phone_no=sc.nextLong();
+		System.out.println("Enter Address::");
+		Address=sc.next();
+		System.out.println("Designation::");
+		Designation=sc.next();
+		
+	}
+	void update()
+	{
+		
+		System.out.println("Enter Name::");
+		Name=sc.next();
+		System.out.println("Enter Salary:: ");
+		salary=sc.nextInt();
+		System.out.println("Enter Phone_no::");
+		phone_no=sc.nextLong();
+		System.out.println("Enter Address::");
+		Address=sc.next();
+		System.out.println("Designation::");
+		Designation=sc.next();
+	}
+	boolean search(int id,IUDM i)
+	{
+		if(i.Id==id)
+		{
+			System.out.println("Record Present");	
+			return true;
+		}
+		else 
+			return false;
 		
 	}
 
@@ -50,7 +103,7 @@ public class Employee extends IUDM{
 
 	do
 	{
-		System.out.println("1.Add\n2.Insert\n3.Update\n4.Delete\n5Display\n6.Exit\n");
+		System.out.println("1.Add\n2.Insert\n3.Update\n4.Remove Specific record.\n5.Remove all records\n6.Display\n7.search specific record\n8.Exit\n");
 		System.out.println("Enter your Choioce::");
 		int ch=sc.nextInt();
 		switch(ch)
@@ -63,18 +116,69 @@ public class Employee extends IUDM{
 			
 			break;
 		case 2:
-			for(IUDM i1:al)
-				System.out.println("\nId:"+i1.Id);
-			break;
+			i=new IUDM();
+			System.out.println("Enter Index::");
+			int index=sc.nextInt();
+			i.insert();
+			al.add(index,i);
 			
-		default: System.out.println("Invalid choice.");
+			break;
+		case 3:
+			System.out.println("Enter ID number which you wants to update.: ");
+				 index=sc.nextInt();
+				 i.update();
+				 al.set(index-1, i);
+				 
+			break;
+		case 4:
+			System.out.println("Which record you wants remove? Enter index::");
+			index=sc.nextInt();
+			al.remove(index);
+			break;
+		case 5:
+			System.out.println("Are you sure you wants to remove all records:");
+			char s=sc.next().charAt(0);
+			if(s=='y'|| s=='Y')
+			al.removeAll(al);
+			break;
+		case 6:
+			for(IUDM i1:al)
+			{
+				i.display(i1);
+			}
+			break;
+		case 7:
+			System.out.println("Enter your id to to search record");
+			int id=sc.nextInt();
+			for(IUDM i1:al)
+			{
+				if(i.search(id,i))
+						{
+					i.display(i);
+					break;
+						}
+				
+			}
+			
+			System.err.println("Sorry!!!! Wrong ID or Not present in record...");
+			break;
+		case 8:
+			System.out.println("Are you sure you wants to exit:");
+			 s=sc.next().charAt(0);
+			 if(s=='y'|| s=='Y')
+			 {
+				 System.exit(0);
+				// System.out.println("exit success");
+			 }
+			 break;
+		
+		default: System.err.println("Invalid choice.");
 		
 		}
-		System.out.println("Wants to continue???:");
+		System.out.println("Wants to continue???(Press y|Y to continue):");
 		c=sc.next().charAt(0);
 	}while(c=='y'||c=='Y');
 		
 	}
 
 }
-
