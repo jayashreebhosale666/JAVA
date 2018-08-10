@@ -1,0 +1,59 @@
+import java.lang.annotation.*;
+import java.lang.reflect.Field;
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+
+@interface MyAnnotation
+{
+	int maxLength();
+}
+
+class Person
+{
+	@MyAnnotation(maxLength=10)
+	public String name;
+	
+	public String getName()
+	{
+		return name;
+	}
+	public void setName(String str) {
+		this.name=str;
+	}
+}
+
+class MyAnnotationHanlder {
+    public void handle(Object ob) throws Exception {
+        Field[] fields = ob.getClass().getFields();
+
+        for (Field field : fields) {
+            if (field.isAnnotationPresent(MyAnnotation.class)) {
+                
+                MyAnnotation myAnn = field.getAnnotation(MyAnnotation.class);
+                int maxLen=myAnn.maxLength();
+                System.out.println("Max length is:"+maxLen);
+                if(maxLen<field.get(ob).toString().length()){
+                    throw new Exception("You have eneterd string greater than max length."+maxLen);
+                }
+                
+            }
+        }
+   }
+
+}
+
+public class CustomAnnotationTest {
+    public static void main(String[] args) throws Exception {
+        MyAnnotationHanlder parser = new MyAnnotationHanlder();
+        Person person= new Person();
+        person.setName("CONCRETEPAGE");
+        parser.handle(person);
+    }
+}
+/*OUTPUT
+Max length is:10
+Exception in thread "main" java.lang.Exception: You have eneterd string greater than max length.10
+	at MyAnnotationHanlder.handle(CustomAnnotationTest.java:36)
+	at CustomAnnotationTest.main(CustomAnnotationTest.java:50)
+
+*/
