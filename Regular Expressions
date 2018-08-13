@@ -1,0 +1,177 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegularExp {
+
+	public static void main(String[] args) {
+Pattern pt=Pattern.compile("[a-z&&[def]]");//(Intersection)
+Matcher m=pt.matcher("abc def ghi jkl mndo pddqr stu vwx yz abbc ddef");
+while(m.find())
+{
+	System.out.print(m.group()+" ");
+}
+//--------------------------------------------------------
+
+	System.out.println();
+	 pt=Pattern.compile("[def]");//(d or e or f)
+	 m=pt.matcher("abc def ghi jkl mndo pddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+		System.out.print(m.group()+" ");
+	}
+
+		
+//--------------------------------------------------------
+	System.out.println();
+	 pt=Pattern.compile("[a-z && [^b-e]]");//(between a to z but not b/c/d/e)
+	 m=pt.matcher("abc def ghi jkl mndo pddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+		System.out.print(m.group()+" ");
+	}
+
+
+//--------------------------------------------------------
+	System.out.println();
+	 pt=Pattern.compile("[a-z && ^[b-e]]");//(intersection b/c/d/e)
+	 m=pt.matcher("abc def ghi jkl mndo pddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+	
+		System.out.print(m.group()+" ");
+	}
+	//[a-z&&[^m-p]]	a through z, and not m through p: [a-lq-z](subtraction)
+
+	System.out.println();
+	 pt=Pattern.compile("[a-z&&[^m-p]]");
+	 m=pt.matcher("abc def ghi jkl mndo pddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+	
+		System.out.print(m.group()+" ");
+	}
+	
+	//----------------------------Digits only---------------------------
+	
+	System.out.println();
+	 pt=Pattern.compile("\\d");
+	 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+	
+		System.out.print(m.group()+" ");
+	}
+	
+	//-----------------------------Non Digits only--------------------------
+	
+		System.out.println();
+		 pt=Pattern.compile("\\D");
+		 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+		while(m.find())
+		{
+		
+			System.out.print(m.group()+" ");
+		}
+		//-----------------------------White staces only--------------------------
+		
+			System.out.println();
+			 pt=Pattern.compile("\\s");
+			 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+	
+	//-----------------------------Non White staces only--------------------------
+	
+	System.out.println();
+	 pt=Pattern.compile("\\S");
+	 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+	while(m.find())
+	{
+	
+		System.out.print(m.group()+" ");
+	}
+	//-----------------------------\w	A word character: [a-zA-Z_0-9]--------------------------
+	
+		System.out.println();
+		 pt=Pattern.compile("\\w");
+		 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+		while(m.find())
+		{
+		
+			System.out.print(m.group()+" ");
+		}
+	//----------------------------\W	A non-word character: [^\w]--------------------------
+		
+			System.out.println();
+			 pt=Pattern.compile("\\W");
+			 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl mndo  21231 1ghhjddqr stu vwx yz abbc ddef");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+//-----------------------\p{Lower}	A lower-case alphabetic character: [a-z]---------------
+			
+			System.out.println();
+			 pt=Pattern.compile("\\p{Lower}");
+			 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl BACDEF mndo  21231 1g ABCDEhgdkgjhhjddqr stu vwx yz abbc ddef");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+//-----------------------\p{Upper}	A lower-case alphabetic character: [a-z]---------------
+			
+			System.out.println();
+			 pt=Pattern.compile("\\p{Upper}");
+			 m=pt.matcher("abc def ghi  1 2 3 4 55 66 jkl BACDEF mndo  21231 1g ABCDEhgdkgjhhjddqr stu vwx yz abbc ddef");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+//-------------------\p{ASCII}	All ASCII:[\x00-\x7F]---------------------------
+
+			System.out.println("\n \\p{ASCII}	All ASCII:[\\x00-\\x7F]");
+			 pt=Pattern.compile("\\p{ASCII}");
+			 m=pt.matcher("abc ±±± def ghi  ~ ¥¥¥¥¥¥¥¥ ®®®®®® ™	™ ♦	♦	♦	♦		™	™	™	™	  1 2 3 4 55 66 †	†	†	†	 jkl BACDEF mndn £ ");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+//-------------------------[^\x00-\x7F] means non ASCII characters---------------
+			System.out.println("\n [^\\x00-\\x7F] means non ASCII characters");
+			 pt=Pattern.compile("[^\\x00-\\x7F]");
+			 m=pt.matcher("abc ±±± def ghi  ~ ¥¥¥¥¥¥¥¥ ®®®®®® ™	™ ♦	♦	♦	♦		™	™	™	™	  1 2 3 4 55 66 †	†	†	†	 jkl BACDEF mndn £ ");
+			while(m.find())
+			{
+			
+				System.out.print(m.group()+" ");
+			}
+}
+}
+/*OUTPUT
+d e f d d d d d e f 
+d e f d d d d d e f 
+a   f   g h i   j k l   m n o   p q r   s t u   v w x   y z   a   f 
+b c   d e       d   d d         b b c   d d e 
+a b c d e f g h i j k l d d d q r s t u v w x y z a b b c d d e f 
+1 2 3 4 5 5 6 6 2 1 2 3 1 1 
+a b c   d e f   g h i                 j k l   m n d o       g h h j d d q r   s t u   v w x   y z   a b b c   d d e f 
+                                      
+a b c d e f g h i 1 2 3 4 5 5 6 6 j k l m n d o 2 1 2 3 1 1 g h h j d d q r s t u v w x y z a b b c d d e f 
+a b c d e f g h i 1 2 3 4 5 5 6 6 j k l m n d o 2 1 2 3 1 1 g h h j d d q r s t u v w x y z a b b c d d e f 
+                                      
+a b c d e f g h i j k l m n d o g h g d k g j h h j d d q r s t u v w x y z a b b c d d e f 
+B A C D E F A B C D E 
+ \p{ASCII}	All ASCII:[\x00-\x7F]
+a b c     d e f   g h i     ~       	   	 	 	 	 	 	 	 	 	     1   2   3   4   5 5   6 6   	 	 	 	   j k l   B A C D E F   m n d n     
+ [^\x00-\x7F] means non ASCII characters
+± ± ± ¥ ¥ ¥ ¥ ¥ ¥ ¥ ¥ ® ® ® ® ® ® ™ ™ ♦ ♦ ♦ ♦ ™ ™ ™ ™ † † † † £ 
+*/
+
+
